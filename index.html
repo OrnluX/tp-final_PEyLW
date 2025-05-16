@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <header id="navbar">
+        <button class="menu-toggle" id="menu-toggle">
+        <img id="menu-icon" src="./assets/icons/icons8-menu.svg" alt="Abrir menú" />
+            
+        </button>
+        <div class="logo">MiLogo</div>
+
+        <nav class="nav-links" id="nav-links">
+        <a href="#">Inicio</a>
+        <a href="#">Servicios</a>
+        <a href="#">Productos</a>
+        <a href="#">Blog</a>
+        <a href="#">Contacto</a>
+    </nav>
+    
+    <div class="icons">
+        <div class="theme-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <label for="theme-toggle" class="switch">
+                <span class="icon sun">
+                    <img src="./assets/icons/sun.png" alt="">
+                </span>
+                <span class="icon moon">
+                    <img src="./assets/icons/moon.png" alt="">
+                </span>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="icons">
+            <span class="icon">🛒</span>
+            <span id="contador-carrito">0</span>
+        </div>
+        <span class="icon">🔔</span>
+    </div>
+  
+</header>
+
+  <main class="container">
+    <section>
+        <h1>Productos</h1>
+        <div id="productos" class="productos-grid"></div>
+    </section>
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+    </header>
+  </body>
+</html>
