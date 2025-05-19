@@ -10,11 +10,16 @@
   --nav-bg: #ffffff;
   --nav-bg-scrolled: rgba(255, 255, 255, 0.5);
   --link-color: #222222;
-  --primary-color: #c76eeb;
-  --primary-variant: #c34cdd;
+  --primary-color: #9c6ade;
+  --primary-variant: #8d5cbe;
   --secondary-color: #353535;
   --switch-bg: #f5f5f5;
   --card-bg: #ffffff;
+  --contrast-color: #6b6b6b;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --contrast-text: #f0f0f0;
+  --contrast-hover: #ccc;
 }
 
 body.dark {
@@ -25,6 +30,11 @@ body.dark {
   --link-color: #f0f0f0;
   --switch-bg: #353535;
   --card-bg: #353535;
+  --contrast-color: #ccc;
+  --shadow: rgba(180, 180, 180, 0.1);
+  --shadow-hover: rgba(180, 180, 180, 0.2);
+  --contrast-text: #222222;
+  --contrast-hover: #444;
 }
 
 body {
@@ -88,6 +98,7 @@ header.scrolled {
   display: flex;
   gap: 1rem;
   font-size: 1.2rem;
+  align-items: center;
 }
 
 .theme-switch {
@@ -159,10 +170,35 @@ input:checked + .switch .slider {
 
 /*Estilos del contenido*/
 
+main {
+  padding-top: 2rem;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+/* Botones */
+.primary-btn {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.secondary-btn {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: var(--contrast-color);
+  color: var(--contrast-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 /* Productos */
@@ -180,7 +216,7 @@ h1 {
 .card {
   background: var(--card-bg);
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -208,23 +244,201 @@ h1 {
   font-weight: bold;
   color: var(--primary-color);
 }
-.add-to-cart {
-  margin-top: 1rem;
-  padding: 0.5rem;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
 
 .add-to-cart:hover {
   background-color: var(--primary-variant);
 }
 
+/* Estilos del contador de articulos del carrito */
+#contador-carrito {
+  position: absolute;
+  top: 8px;
+  right: 68px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.9rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+#carrito-boton {
+  cursor: pointer;
+}
+
+/* Estilos del carrito desplegable */
+.carrito-panel {
+  position: absolute;
+  top: 60px;
+  right: 1rem;
+  width: 300px;
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  border: 1px solid var(--contrast-color);
+  box-shadow: 0 4px 12px var(--shadow);
+  border-radius: 10px;
+  padding: 1rem;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.carrito-header {
+  display: flex;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--contrast-color);
+}
+
+.carrito-item img.miniatura {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid var(--contrast-color);
+}
+
+.carrito-detalles {
+  display: flex;
+  flex-direction: column;
+  width: 185px;
+}
+
+.carrito-detalles .nombre {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.carrito-detalles .precio {
+  font-size: 0.8rem;
+  color: var(--contrast-color);
+  margin: 0.2rem 0 0 0;
+}
+
+.controles-cantidad {
+  background-color: var(--bg-color);
+  border-radius: 0.5rem;
+  max-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0.1rem;
+  margin-top: 4px;
+}
+
+.cantidad {
+  font-size: 0.85rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.btn-cantidad {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 4px;
+}
+
+.btn-cantidad:hover {
+  background-color: var(--contrast-hover);
+}
+
+.btn-cantidad.sumar i {
+  color: rgb(32, 156, 32);
+  font-size: 1rem;
+}
+
+.btn-cantidad.restar i {
+  color: var(--contrast-color);
+  font-size: 1rem;
+}
+
+.btn-cantidad i {
+  color: var(--contrast-color);
+  font-size: 1rem;
+  color: rgb(209, 41, 41);
+}
+.oculto {
+  display: none;
+}
+
+.visible {
+  display: flex;
+}
+
+/* Estilos de la notificacion toast */
+#toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInOut 3s forwards;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toast-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
 /* Estilos responsive */
 @media (max-width: 768px) {
+  .productos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .card img {
+    height: 120px;
+  }
+
   .nav-links {
     position: absolute;
     top: 70px;

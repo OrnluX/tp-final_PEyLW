@@ -6,57 +6,76 @@
     <title>Tienda Online</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header id="navbar">
-        <button class="menu-toggle" id="menu-toggle">
-        <img id="menu-icon" src="./assets/icons/icons8-menu.svg" alt="Abrir menú" />
-            
-        </button>
-        <div class="logo">MiLogo</div>
+      <button class="menu-toggle" id="menu-toggle">
+        <img
+          id="menu-icon"
+          src="./assets/icons/icons8-menu.svg"
+          alt="Abrir menú"
+        />
+      </button>
 
-        <nav class="nav-links" id="nav-links">
+      <div class="logo">MiLogo</div>
+
+      <nav class="nav-links" id="nav-links">
         <a href="#">Inicio</a>
         <a href="#">Servicios</a>
         <a href="#">Productos</a>
         <a href="#">Blog</a>
         <a href="#">Contacto</a>
-    </nav>
-    
-    <div class="icons">
-        <div class="theme-switch">
-            <input type="checkbox" id="theme-toggle" />
-            <label for="theme-toggle" class="switch">
-                <span class="icon sun">
-                    <img src="./assets/icons/sun.png" alt="">
-                </span>
-                <span class="icon moon">
-                    <img src="./assets/icons/moon.png" alt="">
-                </span>
-                <span class="slider"></span>
-            </label>
-        </div>
-        <div class="icons">
-            <!-- <span class="icon">🛒</span> -->
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="contador-carrito">0</span>
-        </div>
-          <!-- <span class="icon">🔔</span> -->
-          <i class="fa-regular fa-heart"></i>
-    </div>
-  
-</header>
+      </nav>
 
-  <main class="container">
-    <section>
+      <div class="icons">
+        <div class="theme-switch">
+          <input type="checkbox" id="theme-toggle" />
+          <label for="theme-toggle" class="switch">
+            <span class="icon sun">
+              <img src="./assets/icons/sun.png" alt="" />
+            </span>
+            <span class="icon moon">
+              <img src="./assets/icons/moon.png" alt="" />
+            </span>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div id="carrito-boton">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="contador-carrito">0</span>
+        </div>
+
+        <!-- Mini carrito desplegable -->
+        <div id="carrito-panel" class="carrito-panel oculto">
+          <div class="carrito-header">
+            <h4>Carrito</h4>
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+
+          <ul id="carrito-lista"></ul>
+          <p id="carrito-vacio">Tu carrito está vacío.</p>
+          <div class="total-carrito" id="total-carrito">Total: $0.00</div>
+          <button class="secondary-btn">Vaciar Carrito</button>
+          <button class="primary-btn">Finalizar Pedido</button>
+        </div>
+
+        <i class="fa-regular fa-heart"></i>
+      </div>
+    </header>
+
+    <main id="app" class="container">
+      <section>
         <h1>Productos</h1>
         <div id="productos" class="productos-grid"></div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <script src="./assets/js/script.js"></script>
-    </header>
+    <div id="toast-container"></div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
